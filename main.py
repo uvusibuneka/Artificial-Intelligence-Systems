@@ -11,10 +11,10 @@ df = (df - df.min())/(df.max() - df.min())
 df = df.dropna()
 
 df = df.reset_index(drop=True)
-df["Ones"] = np.ones(len(df))
+df["ones"] = np.ones(len(df))
 
 model = LinearModel(df)
 model.split_df("median_house_value")
-model.fit(300, lr=0.001)
+model.fit(300, lr=0.00001)
 print(model.coef_determination())
 print(model.weights)

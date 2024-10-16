@@ -28,37 +28,15 @@ class LinearModel:
         self.X_test = test_df.drop(target, axis=1)
         self.y_test = test_df[target]
 
-
-    @overload
-    def fit(self, tolerance: float, lr=0.001) -> bool: ...
-
-    @overload
-    def fit(self, epochs: int, lr=0.001) -> bool: ...
-
     def fit(self, epochs: int, lr=0.0001) -> bool:
-        if None in  [self.X_train, self.y_train, self.X_test, self.y_test]:
-            return False
-        
-        for _ in range(epochs):
-            f = self.X_train.dot(self.weights)
-            err = f - self.y_train
-            grad = 2 * self.X_train.T.dot(err)
-            self.weights -= lr * grad
-            
-        return True
-
-
-    def fit(self, tolerance: float, lr=0.001):
-        '''
         if any(x is None for x in [self.X_train, self.y_train, self.X_test, self.y_test]):
-            return False
-        
-        while self.MSE() > tolerance:
-            f = self.X_train.dot(self.weights)
+            raise ValueError("Some of the training or testing data is missing.")
+
+        for _ in range(epochs):
+            f = np.array(self.X_train).dot(self.weights)
             err = f - self.y_train
             grad = 2 * self.X_train.T.dot(err)
             self.weights -= lr * grad
-        '''
             
         return True
 
