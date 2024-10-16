@@ -35,7 +35,7 @@ class LinearModel:
         for _ in range(epochs):
             f = np.array(self.X_train).dot(self.weights)
             err = f - self.y_train
-            grad = 2 * self.X_train.T.dot(err)
+            grad = 2 * np.array(self.X_train.T).dot(err)
             self.weights -= lr * grad
             
         return True
