@@ -4,7 +4,7 @@ import random as rnd
 from typing import *
 import metrics
 
-class LinearModel:
+class linear_model:
     def __init__(self, df: pd.DataFrame, metric: metrics.Metric):
         num_features = len(df.T) - 1
         self.weights = [rnd.random() for _ in range(num_features)]
