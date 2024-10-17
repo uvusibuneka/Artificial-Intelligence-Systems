@@ -8,8 +8,34 @@ class Metric(ABC):
         pass
 
     @abstractmethod
-    def gradient(self, df: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
         pass
 
 
+class MSE(Metric):
+    def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
+        return np.mean((y - y_pred) ** 2)
+    
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
+        err = y - y_pred
+        return 2 * X.T.dot(err) / len(y)
+    
+
+class MAE(Metric):
+    def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
+        return np.mean(abs(y - y_pred))
+    
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
+        err = y - y_pred
+        return X.T.dot(np.sign(err)) / len(y)
+    
+
+class MPE(Metric):
+    def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
+        return np.mean((y - y_pred)/y)
+    
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
+        err = (y - y_pred)/y
+        return X.T.dot(err) / len(y)
+    
 
