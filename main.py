@@ -14,8 +14,15 @@ df = df.dropna()
 df = df.reset_index(drop=True)
 df["ones"] = np.ones(len(df))
 
+
 model = linear_model(df, metrics.MSE())
 model.split_df("median_house_value")
 model.fit(300, lr=0.00001)
 print(model.coef_determination())
 print(model.weights)
+
+model_MAE = linear_model(df, metrics.MAE())
+model_MAE.split_df("median_house_value")
+model_MAE.fit(300, lr=0.00001)
+print(model_MAE.coef_determination())
+print(model_MAE.weights)

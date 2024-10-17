@@ -16,7 +16,7 @@ class MSE(Metric):
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
         return np.mean((y - y_pred) ** 2)
     
-    def gradient(self, X, y, y_pred):# -> np.ndarray:
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
         err = y - y_pred
         return 2 * np.array(X.T).dot(err)
     
@@ -25,10 +25,9 @@ class MAE(Metric):
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
         return np.mean(abs(y - y_pred))
     
-    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
+    def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series)-> np.ndarray:
         err = y - y_pred
-        return X.T.dot(np.sign(err)) / len(y)
-    
+        return np.array(X.T).dot(np.sign(err))
 
 class MPE(Metric):
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
