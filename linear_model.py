@@ -5,9 +5,12 @@ from typing import *
 import metrics
 
 class linear_model:
-    def __init__(self, df: pd.DataFrame, metric: metrics.Metric):
+    def __init__(self, df: pd.DataFrame, metric: metrics.Metric, weights = np.array([])):
         num_features = len(df.T) - 1
-        self.weights = [rnd.random() for _ in range(num_features)]
+        if len(weights) == 0:
+            self.weights = np.array([rnd.uniform(-1, 1) for _ in range(num_features)])
+        else:
+            self.weights = weights
         self.df = df
         self.X_train = None
         self.X_test = None

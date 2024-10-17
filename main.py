@@ -8,6 +8,8 @@ import metrics
 path = '/home/uvusibuneka/Desktop/СИИ/california_housing_train.csv' 
 df = pd.read_csv(path)
 
+df.describe()
+
 df = (df - df.min())/(df.max() - df.min())
 df = df.dropna()
 
@@ -26,3 +28,37 @@ model_MAE.split_df("median_house_value")
 model_MAE.fit(300, lr=0.00001)
 print(f"{model_MAE.coef_determination():.3f}")
 print([f"{weight:.3f}" for weight in model_MAE.weights])
+'''
+weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
+model_reg_MAE = linear_model(df, weights=weights, metric=metrics.reg_MAE(0.5, weights))
+model_reg_MAE.split_df("median_house_value")
+model_reg_MAE.fit(10000, lr=0.000001)
+print(f"{model_reg_MAE.coef_determination():.3f}")
+print([f"{weight:.3f}" for weight in model_reg_MAE.weights])
+
+
+weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
+model_reg_MSE = linear_model(df, weights=weights, metric=metrics.reg_MSE(0.5, weights))
+model_reg_MSE.split_df("median_house_value")
+model_reg_MSE.fit(10000, lr=0.000001)
+print(f"{model_reg_MSE.coef_determination():.3f}")
+print([f"{weight:.3f}" for weight in model_reg_MSE.weights])
+'''
+
+df = df.drop("housing_median_age", axis=1)
+
+weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
+model_reg_MSE = linear_model(df, weights=weights, metric=metrics.reg_MSE(0.5, weights))
+model_reg_MSE.split_df("median_house_value")
+model_reg_MSE.fit(10000, lr=0.000001)
+print(f"{model_reg_MSE.coef_determination():.3f}")
+print([f"{weight:.3f}" for weight in model_reg_MSE.weights])
+
+
+df = df.drop("median_income", axis=1)
+weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
+model_reg_MSE = linear_model(df, weights=weights, metric=metrics.reg_MSE(0.5, weights))
+model_reg_MSE.split_df("median_house_value")
+model_reg_MSE.fit(10000, lr=0.000001)
+print(f"{model_reg_MSE.coef_determination():.3f}")
+print([f"{weight:.3f}" for weight in model_reg_MSE.weights])
