@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np 
 import random as rnd
 from typing import *
+import metrics
 
 class LinearModel:
-    def __init__(self, df: pd.DataFrame):
+    def __init__(self, df: pd.DataFrame, metric: metrics.Metric):
         num_features = len(df.T) - 1
         self.weights = [rnd.random() for _ in range(num_features)]
         self.df = df
@@ -12,6 +13,7 @@ class LinearModel:
         self.X_test = None
         self.y_train = None
         self.y_test = None
+        self.metric = metric
 
     def predict(self, x: pd.DataFrame) -> pd.Series:
         return x.dot(self.weights)
@@ -34,11 +36,11 @@ class LinearModel:
 
         for _ in range(epochs):
             f = np.array(self.X_train).dot(self.weights)
-            err = f - self.y_train
-            grad = 2 * np.array(self.X_train.T).dot(err)
+            grad = self.metric.gradient(self.X_train, f, self.y_train)#2 * np.array(self.X_train.T).dot(err)
             self.weights -= lr * grad
             
         return True
+    
 
     def coef_determination(self):
         numerator = sum([(y - pred_y)**2 for y, pred_y in zip(self.y_train, self.predict(pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)))])
