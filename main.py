@@ -28,6 +28,16 @@ model_MAE.split_df("median_house_value")
 model_MAE.fit(300, lr=0.00001)
 print(f"{model_MAE.coef_determination():.3f}")
 print([f"{weight:.3f}" for weight in model_MAE.weights])
+
+
+df["population_density"] = df['population'] / df['households']
+
+model2 = linear_model(df, metrics.MSE())
+model2.split_df("median_house_value")
+model2.fit(300, lr=0.00001)
+print(model2.coef_determination())
+print(model2.weights)
+
 '''
 weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
 model_reg_MAE = linear_model(df, weights=weights, metric=metrics.reg_MAE(0.5, weights))
@@ -44,8 +54,6 @@ model_reg_MSE.fit(10000, lr=0.000001)
 print(f"{model_reg_MSE.coef_determination():.3f}")
 print([f"{weight:.3f}" for weight in model_reg_MSE.weights])
 '''
-
-df = df.drop("housing_median_age", axis=1)
 
 weights = np.array([rnd.uniform(-1, 1) for _ in range(len(df.T) - 1)])
 model_reg_MSE = linear_model(df, weights=weights, metric=metrics.reg_MSE(0.5, weights))
