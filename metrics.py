@@ -17,8 +17,8 @@ class MSE(Metric):
         return np.mean((y - y_pred) ** 2)
     
     def gradient(self, X: pd.DataFrame, y: pd.Series, y_pred: pd.Series) -> np.ndarray:
-        err = y - y_pred
-        return 2 * X.T.dot(err) / len(y)
+        err = y_pred - y
+        return 2 * np.array(self.X.T).dot(err) / len(y)
     
 
 class MAE(Metric):
