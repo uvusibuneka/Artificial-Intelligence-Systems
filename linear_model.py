@@ -49,3 +49,24 @@ class linear_model:
         numerator = sum([(y - pred_y)**2 for y, pred_y in zip(self.y_train, self.predict(pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)))])
         denominator = sum([(y - np.mean(self.y_train))**2 for y in  self.y_train])
         return 1 - numerator/denominator
+
+
+class stohastic_linear_model(linear_model):
+    def __init__(self, df: pd.DataFrame, metric: metrics.Metric, weights = np.array([])):
+        super().__init__(df, metric, weights)
+
+    def st_fit(self, epochs: int, lr=0.0001, batch_size=100) -> bool:
+        if any(x is None for x in [self.X_train, self.y_train, self.X_test, self.y_test]):
+            raise ValueError("Some of the training or testing data is missing.")
+
+        for _ in range(epochs):
+            for i in range(len(self.X_train), batch_size):
+                X = self.X_train.iloc[i:i+batch_size]
+                y = self.y_train.iloc[i:i+batch_size]
+                f = np.array(X).dot(self.weights)
+                grad = self.metric.gradient(X, f, y)
+                self.weights -= lr * grad
+            
+        return True
+    
+
