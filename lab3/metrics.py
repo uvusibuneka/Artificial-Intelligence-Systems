@@ -29,7 +29,19 @@ class MAE(Metric):
         err = y - y_pred
         return np.array(X.T).dot(np.sign(err))
 
-class reg_MSE(MSE):
+class reg_MSE_L1(MSE):
+    def __init__(self, reg_coef: float, weights: np.ndarray):
+        super().__init__()
+        self.reg_coef = reg_coef
+        self.weights = weights
+
+    def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
+        return super().loss(y, y_pred) + self.reg_coef * np.sum(np.abs(self.weights))
+    
+    def gradient(self, X, y, y_pred):
+        return super().gradient(X, y, y_pred) + self.reg_coef * np.sign(self.weights)
+
+class reg_MSE_L2(MSE):
     def __init__(self, reg_coef: float, weights: np.ndarray):
         super().__init__()
         self.reg_coef = reg_coef
@@ -41,7 +53,7 @@ class reg_MSE(MSE):
     def gradient(self, X, y, y_pred):
         return super().gradient(X, y, y_pred) + 2 * self.reg_coef * self.weights
 
-class reg_MAE(MAE):
+class reg_MAE_L1(MAE):
     def __init__(self, reg_coef: float, weights: np.ndarray):
         super().__init__()
         self.reg_coef = reg_coef
