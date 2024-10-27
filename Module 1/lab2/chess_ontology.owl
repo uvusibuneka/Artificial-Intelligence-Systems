@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://example.org/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://example.org/spassky">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/strategic"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_1972"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/anand">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/endgame_specialist"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_2008"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/kramnik"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_2008"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/aggressive">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/petrosian">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2023">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/kramnik">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_2000"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/kasparov"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_2000"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/botvinnik">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/strategic"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_1961"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Style">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/carlsen">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/strategic"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_2013"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/anand"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_2013"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Tournament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/lasker">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2016">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ding">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/tactical"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_2023"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/nepomniachtchi"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_2023"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/unpredictable">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/kasparov">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/aggressive"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_1985"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/karpov"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_1985"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/positional">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_1985">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/karpov">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/positional"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_1985"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/so">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/grischuk">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tal">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/unpredictable"/>
+    <ns1:participatedIn rdf:resource="http://example.org/candidates_1971"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2021">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/endgame_specialist">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/strategic">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/capablanca">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/candidates_1971">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/fischer">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/tactical"/>
+    <ns1:participatedIn rdf:resource="http://example.org/world_championship_1972"/>
+    <ns1:playedAgainst rdf:resource="http://example.org/spassky"/>
+    <ns1:wonIn rdf:resource="http://example.org/world_championship_1972"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/alehin">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/tactical">
+    <rdf:type rdf:resource="http://example.org/Style"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2013">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/nakamura">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+    <ns1:hasStyle rdf:resource="http://example.org/tactical"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2000">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/karjakin">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/morphy">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/nepomniachtchi">
+    <rdf:type rdf:resource="http://example.org/Player"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_1984">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Player">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_1972">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/world_championship_2008">
+    <rdf:type rdf:resource="http://example.org/Tournament"/>
+  </rdf:Description>
+</rdf:RDF>
