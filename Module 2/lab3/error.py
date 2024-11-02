@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 import pandas as pd
 
-class Metric(ABC):
+class Error(ABC):
     @abstractmethod
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
         pass
@@ -12,7 +12,7 @@ class Metric(ABC):
         pass
 
 
-class MSE(Metric):
+class MSE(Error):
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
         return np.mean((y - y_pred) ** 2)
     
@@ -21,7 +21,7 @@ class MSE(Metric):
         return 2 * np.array(X.T).dot(err)
     
 
-class MAE(Metric):
+class MAE(Error):
     def loss(self, y: pd.Series, y_pred: pd.Series) -> float:
         return np.mean(abs(y - y_pred))
     
